@@ -52,7 +52,7 @@ class Extensions(request):
         """
         pass
 
-    def add_extension(self, number:str, first_name:str, last_name:Optional[str]=None, email:Optional[str]=None, cell_phone:Optional[str]=None,outb_call_id:Optional[str]=None,voice_mail_enabled:Optional[bool]=False,accept_multiple_calls:Optional[bool]=False) -> dict:
+    def add_extension(self, number:str, first_name:str, last_name:Optional[str]=None, email:Optional[str]=None, mobile:Optional[str]=None,outb_call_id:Optional[str]=None,voice_mail_enabled:Optional[bool]=False,accept_multiple_calls:Optional[bool]=False) -> dict:
         """
         Add an extension
 
@@ -60,7 +60,7 @@ class Extensions(request):
         :param first_name: First name required
         :param last_name: Last name Optional
         :param email: Email Optional
-        :param cell_phone: Cell phone Optional
+        :param mobile: Cell phone Optional
         :param outb_call_id: Outbound caller id Optional
         :param voice_mail_enabled: Voice mail enabled Optional (default: False)
         :param accept_multiple_calls: Accept multiple calls Optional (default: False)
@@ -75,8 +75,8 @@ class Extensions(request):
             self.update(ObjectId,"LastName",last_name)
         if email:
             self.update(ObjectId,"Email",email)
-        if cell_phone:
-            self.update(ObjectId,"MobileNumber",cell_phone)
+        if mobile:
+            self.update(ObjectId,"MobileNumber",mobile)
         if outb_call_id:
             self.update(ObjectId,"OutboundCallerId",outb_call_id)
         if voice_mail_enabled:

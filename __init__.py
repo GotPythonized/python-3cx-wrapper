@@ -37,7 +37,7 @@ def add_one_by_one():
         first_name = input('First Name: ')
         last_name = input('Last Name: ')
         email = input('Email: ')
-        cell_phone = input('Cell Phone: ')
+        mobile = input('Mobile: ')
         outb_call_id = input('Outbound Caller ID: ')
         voice_mail_enabled = input('Voice Mail Enabled (y/N): ')
         if voice_mail_enabled.lower() == 'y':
@@ -49,14 +49,14 @@ def add_one_by_one():
             accept_multiple_calls = True
         else:
             accept_multiple_calls = False
-        extensions.add_extension(number, first_name, last_name, email, cell_phone, outb_call_id, voice_mail_enabled, accept_multiple_calls)
+        extensions.add_extension(number, first_name, last_name, email, mobile, outb_call_id, voice_mail_enabled, accept_multiple_calls)
         if input('Add another (y/N): ').lower() == 'n':
             break
         
     
 
-def add_from_list():
-    EXTENSIONS = [{'number': '4002', 'first_name': 'John', 'last_name': 'Doe', 'email': 'john.doe@example.com', 'cell_phone':None, 'outb_call_id':None, 'voice_mail_enabled':None, 'accept_multiple_calls':None,}]
+def add_from_list(extensions_list=None):
+    EXTENSIONS = extensions_list or [{'number': '4002', 'first_name': 'John', 'last_name': 'Doe', 'email': 'john.doe@example.com', 'cell_phone':None, 'outb_call_id':None, 'voice_mail_enabled':None, 'accept_multiple_calls':None,}]
     for i in EXTENSIONS:
         extensions.add_extension(**i)
 
@@ -86,6 +86,7 @@ if __name__ == "__main__":
                 extensions.get_qrcode(input("Extension Number: "))
             elif choice == '0':
                 exit()
+
     except KeyboardInterrupt:
         print('\nCtrl+C pressed\nQuitting...')
 
